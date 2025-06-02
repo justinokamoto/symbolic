@@ -63,6 +63,7 @@ class CMakeBuild(build_ext.build_ext):
         # Run CMake.
         build_type = "Debug" if self.debug else "Release"
         python_version = ".".join(map(str, sys.version_info[:3]))
+        cmake_version = "3.11"
         cmake_command = [
             "cmake",
             "-B" + str(build_dir),
@@ -71,6 +72,7 @@ class CMakeBuild(build_ext.build_ext):
             "-DBUILD_PYTHON=ON",
             "-DPYBIND11_PYTHON_VERSION=" + python_version,
             "-DCMAKE_BUILD_TYPE=" + build_type,
+            "-DCMAKE_POLICY_VERSION_MINIMUM=" + cmake_version,
         ]
         if not self.inplace:
             # Use relative paths for install rpath.
