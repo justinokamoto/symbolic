@@ -63,7 +63,7 @@ class CMakeBuild(build_ext.build_ext):
         # Run CMake.
         build_type = "Debug" if self.debug else "Release"
         python_version = ".".join(map(str, sys.version_info[:3]))
-        cmake_version = "3.5"
+        cmake_version = "3.11"
         cmake_command = [
             "cmake",
             "-B" + str(build_dir),
